@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  mysqldb:
+    image: mysql
+
+    restart: always
+
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+
+      MYSQL_DATABASE: deliveroo
+
+    ports:
+      - 3306:3306
+
+    volumes:
+      - db-config:/etc/mysql
+
+      - db-data:/var/lib/mysql
+
+      - ./db/backup/files/:/data_backup/data
+
+volumes:
+  db-config:
+
+  db-data:
